@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keerthana Keerthi | Portfolio</title>
+
     <style>
+        /* ===== Base Styles ===== */
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f7fa;
             margin: 0;
             padding: 0;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .container {
@@ -18,12 +32,19 @@
             padding: 40px 20px;
         }
 
+        /* ===== Card Animation ===== */
         .card {
             background-color: #ffffff;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
             margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
         }
 
         h1 {
@@ -31,11 +52,26 @@
             margin-bottom: 10px;
         }
 
+        /* ===== Animated Section Headings ===== */
         h2 {
             color: #333;
-            border-bottom: 2px solid #eaeaea;
+            position: relative;
             padding-bottom: 8px;
-            margin-top: 30px;
+        }
+
+        h2::after {
+            content: "";
+            width: 0;
+            height: 3px;
+            background-color: #1a73e8;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: width 0.4s ease;
+        }
+
+        .card:hover h2::after {
+            width: 60px;
         }
 
         p {
@@ -49,14 +85,16 @@
             line-height: 1.8;
         }
 
+        /* ===== Link Hover Animation ===== */
         a {
             color: #1a73e8;
             text-decoration: none;
             font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         a:hover {
-            text-decoration: underline;
+            color: #0b57d0;
         }
 
         .social-links li {
@@ -72,10 +110,11 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
 
-        <!-- Header Section -->
+        <!-- Header -->
         <div class="card">
             <h1>Keerthana Keerthi</h1>
             <p>
@@ -88,15 +127,13 @@
         <div class="card">
             <h2>Python 30-Day Learning Journey</h2>
             <ul>
-                <li><strong>Day 1:</strong> Introduction to Python, basics, first print statement, overview of Python concepts.</li>
-                <li><strong>Day 2:</strong> Variables, data types, and arithmetic operators.</li>
-                <li><strong>Day 3:</strong> Input/output operations, formatted strings (f-strings), comments, and basic Python programs.</li>
-                <li><strong>Day 4:</strong> String manipulation: concatenation, string methods, length, indexing, slicing, and escape sequences.</li>
-                <li><strong>Day 5:</strong> Learned Python operators including NoneType, assignment, comparison, logical, membership, and bitwise operators.</li>
-                <li><strong>Day 6:</strong> Learned Python lists including accessing and modifying elements, append/insert/remove/pop/clear operations, slicing, list functions (len, sorted, sum), list methods (index, count, reverse, sort), and nested lists.</li>
-                <li><strong>Day 7:</strong> Learned Python lists, tuples, and sets including basic operations, methods, and differences between them.</li>
-
-                
+                <li><strong>Day 1:</strong> Introduction to Python, basics, first print statement.</li>
+                <li><strong>Day 2:</strong> Variables, data types, arithmetic operators.</li>
+                <li><strong>Day 3:</strong> Input/output, f-strings, comments, basic programs.</li>
+                <li><strong>Day 4:</strong> String manipulation and slicing.</li>
+                <li><strong>Day 5:</strong> Python operators.</li>
+                <li><strong>Day 6:</strong> Lists, list methods, functions, nested lists.</li>
+                <li><strong>Day 7:</strong> Lists, tuples, and sets with operations and differences.</li>
             </ul>
         </div>
 
@@ -104,8 +141,6 @@
         <div class="card">
             <h2>GitHub</h2>
             <p>
-                Check my daily coding progress here:
-                <br><br>
                 🔗 <a href="https://github.com/keerthanakh89/Python-Learning-Journey" target="_blank">
                     Python Learning Journey Repository
                 </a>
