@@ -3,22 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keerthana K H| Portfolio</title>
+    <title>Keerthana K H | Portfolio</title>
 
     <style>
-        /* ===== Base Styles ===== */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f7fa;
-            margin: 0;
-            padding: 0;
-            animation: fadeIn 0.8s ease-in;
+        /* ===== Root Colors ===== */
+        :root {
+            --bg-black: #0d0d0d;
+            --card-black: #151515;
+            --orange: #ff7a18;
+            --orange-light: #ff9f43;
+            --text-light: #eaeaea;
+            --gray: #b5b5b5;
+            --glow: rgba(255, 122, 24, 0.6);
         }
 
-        @keyframes fadeIn {
+        /* ===== Global ===== */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: radial-gradient(circle at top, #1a1a1a, var(--bg-black));
+            color: var(--text-light);
+            animation: pageFade 1s ease-in;
+        }
+
+        @keyframes pageFade {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -29,84 +44,148 @@
         .container {
             max-width: 900px;
             margin: auto;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
 
-        /* ===== Card Animation ===== */
+        /* ===== Cards ===== */
         .card {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-            margin-bottom: 30px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(145deg, #1b1b1b, var(--card-black));
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--glow), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .card:hover::before {
+            opacity: 0.25;
         }
 
         .card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(255, 122, 24, 0.25);
         }
 
+        /* ===== Headings ===== */
         h1 {
-            color: #1a73e8;
+            font-size: 36px;
             margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--orange), var(--orange-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glowText 2s infinite alternate;
         }
 
-        /* ===== Animated Section Headings ===== */
+        @keyframes glowText {
+            from {
+                text-shadow: 0 0 10px var(--glow);
+            }
+            to {
+                text-shadow: 0 0 20px var(--orange);
+            }
+        }
+
         h2 {
-            color: #333;
+            color: var(--orange);
+            margin-bottom: 15px;
             position: relative;
-            padding-bottom: 8px;
         }
 
         h2::after {
             content: "";
-            width: 0;
-            height: 3px;
-            background-color: #1a73e8;
             position: absolute;
             left: 0;
             bottom: -6px;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--orange), var(--orange-light));
             transition: width 0.4s ease;
         }
 
         .card:hover h2::after {
-            width: 60px;
+            width: 80px;
         }
 
         p {
+            color: var(--gray);
             font-size: 16px;
-            line-height: 1.7;
-            color: #444;
-        }
-
-        ul {
-            padding-left: 20px;
             line-height: 1.8;
         }
 
-        /* ===== Link Hover Animation ===== */
+        /* ===== Lists ===== */
+        ul {
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            color: var(--text-light);
+            position: relative;
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ===== Links ===== */
         a {
-            color: #1a73e8;
+            color: var(--orange-light);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            position: relative;
         }
 
-        a:hover {
-            color: #0b57d0;
+        a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: width 0.3s ease;
         }
 
+        a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== Social ===== */
         .social-links li {
             list-style: none;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 17px;
         }
 
+        /* ===== Footer ===== */
         footer {
             text-align: center;
-            color: #777;
+            color: #888;
+            margin-top: 50px;
             font-size: 14px;
-            margin-top: 40px;
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -119,7 +198,7 @@
             <h1>Keerthana K H</h1>
             <p>
                 Engineering student learning <strong>Python</strong> and <strong>problem-solving</strong>.
-                Building consistency through daily practice and projects.
+                Building consistency through daily practice, projects, and GitHub contributions.
             </p>
         </div>
 
@@ -127,14 +206,14 @@
         <div class="card">
             <h2>Python 30-Day Learning Journey</h2>
             <ul>
-                <li><strong>Day 1:</strong> Introduction to Python, basics, first print statement.</li>
-                <li><strong>Day 2:</strong> Variables, data types, arithmetic operators.</li>
-                <li><strong>Day 3:</strong> Input/output, f-strings, comments, basic programs.</li>
-                <li><strong>Day 4:</strong> String manipulation and slicing.</li>
-                <li><strong>Day 5:</strong> Python operators.</li>
-                <li><strong>Day 6:</strong> Lists, list methods, functions, nested lists.</li>
-                <li><strong>Day 7:</strong> Lists, tuples, and sets with operations and differences.</li>
-                <li><strong>Day 8:</strong> Learned Python dictionaries including creating dictionaries, accessing elements, adding and updating values, removing elements, dictionary methods (keys, values, items), looping through dictionaries, and clearing dictionaries.</li>
+                <li><strong>Day 1:</strong> Python basics & first program</li>
+                <li><strong>Day 2:</strong> Variables, data types, operators</li>
+                <li><strong>Day 3:</strong> Input/output, f-strings</li>
+                <li><strong>Day 4:</strong> Strings & slicing</li>
+                <li><strong>Day 5:</strong> Operators & expressions</li>
+                <li><strong>Day 6:</strong> Lists & list methods</li>
+                <li><strong>Day 7:</strong> Lists, tuples, sets</li>
+                <li><strong>Day 8:</strong> Dictionaries & dictionary methods</li>
             </ul>
         </div>
 
@@ -148,7 +227,7 @@
             </p>
         </div>
 
-        <!-- Social Links -->
+        <!-- Social -->
         <div class="card">
             <h2>Connect with Me</h2>
             <ul class="social-links">
@@ -157,7 +236,6 @@
             </ul>
         </div>
 
-        <!-- Footer -->
         <footer>
             © 2026 Keerthana K H • Learning one step at a time 🚀
         </footer>
