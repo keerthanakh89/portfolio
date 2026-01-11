@@ -20,6 +20,21 @@
             box-sizing: border-box;
             scroll-behavior: smooth;
         }
+      <script>
+    const text = "Engineering student learning Python & problem-solving.";
+    let i = 0;
+    const speed = 80;
+    const target = document.querySelector("p");
+
+    function typeEffect() {
+        if (i < text.length) {
+            target.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeEffect, speed);
+        }
+    }
+</script>
+  
 
         body {
             margin: 0;
